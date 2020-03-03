@@ -6,12 +6,7 @@ import java.util.Objects;
 public class OutLiftState extends CommonLiftState {
 
     private final Map<Integer, List<Passenger>> waitingPassenger;
-    private boolean isFirstFloor = false;
-    public OutLiftState(int maxFloor, final Map<Integer, List<Passenger>> waitingPassenger, boolean firstFloor) {
-        super(maxFloor);
-        this.waitingPassenger = waitingPassenger;
-        this.isFirstFloor = firstFloor;
-    }
+
 
     public OutLiftState(int maxFloor, final Map<Integer, List<Passenger>> waitingPassenger) {
         super(maxFloor);
@@ -20,10 +15,10 @@ public class OutLiftState extends CommonLiftState {
 
     @Override
     public void next(Lift lift) {
-    /*    if (Objects.isNull(lift.getPassengers()) || lift.getPassengers().isEmpty()) {
+        if (Objects.isNull(lift.getPassengers()) || lift.getPassengers().isEmpty()) {
             lift.setState(new FillLiftState(maxFloor, waitingPassenger));
             return;
-        }*/
+        }
         outPassenger(lift);
         lift.setState(new FillLiftState(maxFloor, waitingPassenger));
     }
@@ -31,8 +26,7 @@ public class OutLiftState extends CommonLiftState {
     private void outPassenger(Lift lift) {
         for (Iterator<Passenger> iterator = lift.getPassengers().iterator(); iterator.hasNext(); ) {
             final Passenger passenger = iterator.next();
-            // if (passenger.getDestinationFloor() == (isFirstFloor ? 0 : lift.getCurrentFloor())) {
-            if (passenger.getDestinationFloor() == lift.getCurrentFloor()){
+            if (passenger.getDestinationFloor() == lift.getCurrentFloor()) {
                 iterator.remove();
             }
         }

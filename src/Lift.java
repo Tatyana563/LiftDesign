@@ -31,11 +31,6 @@ public class Lift {
         passengers = new ArrayList<>(maxCapacity);
     }
 
-    public int getMaxCapacity() {
-
-        return maxCapacity;
-    }
-
     //delegation
     public void run() {
         state.next(this);
