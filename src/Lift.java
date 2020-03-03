@@ -15,7 +15,6 @@ public class Lift {
     public static final int numberOfPassengersPerFloor = generateRandom(MIN_PASSENGER, MAX_PASSENGER);
     public static Map<Integer, List<Passenger>> passengerOnFloor = new TreeMap();
 
-    // public static final   List<Passenger> waitingPassengers = createPassengers();
     public Direction getDirection() {
         return direction;
     }
