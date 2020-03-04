@@ -1,4 +1,4 @@
-public abstract class CommonLiftState implements LiftState{
+public abstract class CommonLiftState implements LiftState {
 
     protected final int maxFloor;
     protected Direction direction;
