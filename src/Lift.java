@@ -2,18 +2,18 @@ import java.util.*;
 
 // design pattern state is used;
 public class Lift {
-    public static final int MIN_FLOOR = 5;
+  /*  public static final int MIN_FLOOR = 5;
     public static final int MAX_FLOOR = 21;
     public static final int MIN_PASSENGER = 0;
-    public static final int MAX_PASSENGER = 11;
+    public static final int MAX_PASSENGER = 11;*/
     private final int maxCapacity;
     private final Collection<Passenger> passengers;
     private LiftState state;
     private Direction direction;
     private int currentFloor;
-    public static final int buildingHeight = generateRandom(MIN_FLOOR, MAX_FLOOR);
-    public static final int numberOfPassengersPerFloor = generateRandom(MIN_PASSENGER, MAX_PASSENGER);
-    public static Map<Integer, List<Passenger>> passengerOnFloor = new TreeMap();
+/*    public static final int buildingHeight = generateRandom(MIN_FLOOR, MAX_FLOOR);
+    public static final int numberOfPassengersPerFloor = generateRandom(MIN_PASSENGER, MAX_PASSENGER);*/
+  //  public static Map<Integer, List<Passenger>> passengerOnFloor = new TreeMap();
 
     public Direction getDirection() {
         return direction;
@@ -60,13 +60,13 @@ public class Lift {
     }
 
 
-    public static int generateRandom(int MIN, int MAX) {
+  /*  public static int generateRandom(int MIN, int MAX) {
         Random floorAmount = new Random();
         int number = floorAmount.nextInt(MAX - MIN) + MIN;
         return number;
-    }
+    }*/
 
-    public static Map<Integer, List<Passenger>> createPassengers() {
+   /* public static Map<Integer, List<Passenger>> createPassengers() {
         List<Passenger> passengers = new ArrayList<>(numberOfPassengersPerFloor);
 
         for (int j = 0; j < buildingHeight; j++) {
@@ -95,7 +95,7 @@ public class Lift {
             }
         }
         return passengerOnFloor;
-    }
+    }*/
 
 
     public static void main(String[] args) {
@@ -105,8 +105,10 @@ public class Lift {
         map.put(3, new ArrayList<>(Arrays.asList(new Passenger(3, 0), new Passenger(3, 1), new Passenger(3, 10))));
         map.put(6, new ArrayList<>(Arrays.asList(new Passenger(6, 0), new Passenger(6, 1), new Passenger(6, 8), new Passenger(6, 3))));*//*
          */
-        Map<Integer, List<Passenger>> map = createPassengers();
-        Lift lift = new Lift(5, new FillLiftState(buildingHeight, map));
+       // Map<Integer, List<Passenger>> map = createPassengers();
+        Map<Integer, List<Passenger>> map = GeneratePassengers.createPassengers();
+      //  Lift lift = new Lift(5, new FillLiftState(buildingHeight, map));
+        Lift lift = new Lift(5, new FillLiftState(GeneratePassengers.buildingHeight, map));
         lift.setDirection(Direction.UP);
         lift.setCurrentFloor(0);
         while (true) {
